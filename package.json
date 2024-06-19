@@ -1,0 +1,20 @@
+{
+  "name": "cypress-e2e-task",
+  "version": "2.0.0",
+  "description": "This is a demo project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.12.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-mochawesome-reporter": "^3.8.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinition": true,
+    "stepDefinitions": "cypress/e2e/step_definitions/"
+  }
+}
