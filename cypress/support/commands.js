@@ -30,4 +30,34 @@ Cypress.Commands.add('login', (email, password)=>{
     cy.get('#user-name').type(email);
     cy.get('#password').type(password);
     cy.get('#login-button').click();
-})
+});
+
+Cypress.Commands.add('selectCheapest', (list, itemPrice, addToCart) => {
+    const products = [];
+    cy.get(list).each(($item) => {
+        const priceText = $item.find(itemPrice).text();
+        const price = parseFloat(priceText.replace('$', ''));
+        products.push({ price, element: $item });
+    }).then(() => {
+        // Sort products to get the cheapest first
+        products.sort((a, b) => a.price - b.price);
+        // Click on the addToCart button of the cheapest product
+        cy.wrap(products[0].element).find(addToCart).click();
+    });
+});
+
+Cypress.Commands.add('selectSecondCostliest', (list, itemPrice, addToCart) => {
+    const products = [];
+    cy.get(list).each(($item) => {
+        const priceText = $item.find(itemPrice).text();
+        const price = parseFloat(priceText.replace('$', ''));
+        products.push({ price, element: $item });
+    }).then(() => {
+        // Sort products to get the second costliest product
+        products.sort((a, b) => b.price - a.price); // Sort descending for costliest
+        // Click on the addToCart button of the second costliest product
+        cy.wrap(products[1].element).find(addToCart).click();
+    });
+});
+
+

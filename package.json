@@ -4,6 +4,7 @@
   "description": "This is a demo project",
   "main": "index.js",
   "scripts": {
+    "test:purchaseFlow": "npx cypress run --spec cypress/e2e/features/purchase.feature",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,5 +17,8 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinition": true,
     "stepDefinitions": "cypress/e2e/step_definitions/"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1"
   }
 }
