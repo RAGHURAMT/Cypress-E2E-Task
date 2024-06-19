@@ -2,7 +2,6 @@ export class productsPage{
     weblocators = {
         productSort:'.product_sort_container',
         productsList:'.inventory_list .inventory_item',
-        productPrice:'.inventory_item_price',
         addToCart:'.btn.btn_primary.btn_small.btn_inventory',
         shoppingCartBtn:'.shopping_cart_link'
     }
@@ -12,11 +11,11 @@ export class productsPage{
     };
 
     AddCheapestProduct(){
-        cy.selectCheapest(this.weblocators.productsList,this.weblocators.productPrice,this.weblocators.addToCart)
+        cy.selectCheapest(this.weblocators.productsList, this.weblocators.addToCart)
     };
 
     AddSecondCostliestProduct(){
-        cy.selectSecondCostliest(this.weblocators.productsList,this.weblocators.productPrice,this.weblocators.addToCart)
+        cy.selectSecondCostliest(this.weblocators.productsList,this.weblocators.addToCart)
     };
 
     selectShoppingCart(){
