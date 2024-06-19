@@ -1,0 +1,33 @@
+name: Purchase flow tests
+
+on: push
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:purchaseFlow
+
+      - name: Cypress Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mochawesome HTML Report
+          path: cypress/reports/html
+
+      - name: Slack Notification
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: ${{ job.status }} 
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Test Automation Report - https://github.com/RAGHURAMT/Cypress-E2E-Task/actions/runs/${{github.run_id}}'
+          SLACK_TITLE: Cypress Tests
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
