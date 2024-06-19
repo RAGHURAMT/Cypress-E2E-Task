@@ -17,6 +17,7 @@ Cypress (version)
     4. npm install --save-dev cypress-cucumber-preprocessor
     5. npx cypress open
     6. npm i --save-dev cypress-mochawesome-reporter
+    7. npm install --save-dev @faker-js/faker
 
 3. To run the tests:
     <!-- To run all the spec files -->
