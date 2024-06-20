@@ -41,9 +41,9 @@ Cypress.Commands.add('selectCheapest', (list, addToCart) => {
 
 Cypress.Commands.add('selectSecondCostliest', (list, addToCart) => {
     cy.get(list)
-    .first()
-    .find(addToCart)
-    .click();
+      .eq(1)
+      .find(addToCart)
+      .click();
 });
 
 
